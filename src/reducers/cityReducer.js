@@ -4,7 +4,7 @@ const {initialState} = constants;
 const cityReducer = (state=initialState.cityName, action) => {
   switch(action.type) {
     case 'GET_CITY':
-    return action.cityName;
+    return action.cityName
     default:
     return state;
   }

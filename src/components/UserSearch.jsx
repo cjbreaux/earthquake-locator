@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCity } from './../action';
+import { getCity, getCordinates} from './../action';
 
 function UserSearch({dispatch, cityName}) {
   let input;
@@ -10,6 +10,7 @@ function UserSearch({dispatch, cityName}) {
           e.preventDefault();
           console.log(input.value)
           dispatch(getCity(input.value));
+          dispatch(getCordinates(input.value));
         }}>
         <input placeholder="enter a location" ref={node => {
             input = node;

@@ -7,9 +7,10 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <Provider store={store}>
