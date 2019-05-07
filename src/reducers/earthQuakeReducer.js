@@ -17,4 +17,4 @@ const { initialState } = constants;
    }
  }
 
- export default EarthQuakeReducer
+ export default EarthQuakeReducer;

@@ -15,7 +15,8 @@ function EarthQuake({dispatch}) {
 const mapStateToProps = state => {
   return{
   data: state.earthQuakeData,
-  cityName: state.cityReducer
+  cityName: state.cityReducer,
+  eqSites: state.resultsDataReducer
   }
 }
 export default connect(mapStateToProps)(EarthQuake);

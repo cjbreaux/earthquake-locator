@@ -3,5 +3,6 @@ export const initialState = {
     lat: null,
     long: null
   },
-  cityName: null
+  cityName: null,
+  earthQuakeSites: []
 }

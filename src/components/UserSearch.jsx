@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCity, getCordinates} from './../action';
+import { getCity, getCoordinates, upDateEarthQuakeSites} from './../action';
 
-function UserSearch({dispatch, cityName}) {
+function UserSearch({dispatch, upDateEarthQuakeSites}) {
   let input;
   return(
     <div>
@@ -10,7 +10,8 @@ function UserSearch({dispatch, cityName}) {
           e.preventDefault();
           console.log(input.value)
           dispatch(getCity(input.value));
-          dispatch(getCordinates(input.value));
+          dispatch(getCoordinates(input.value));
+          dispatch(upDateEarthQuakeSites);
         }}>
         <input placeholder="enter a location" ref={node => {
             input = node;
@@ -24,7 +25,8 @@ function UserSearch({dispatch, cityName}) {
 const mapStateToProps = state => {
   return{
   data: state.earthQuakeData,
-  cityName: state.cityReducer
+  cityName: state.cityReducer,
+  eqSites: state.resultsDataReducer
   }
 }
 
