@@ -4,7 +4,7 @@ import cityReducer from './cityReducer';
 import resultsDataReducer from './resultsDataReducer';
 
 const rootReducer = combineReducers({
-  locationData: earthQuakeReducer,
+  location: earthQuakeReducer,
   cityName: cityReducer,
   eqSites: resultsDataReducer
 });

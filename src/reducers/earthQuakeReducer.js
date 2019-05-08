@@ -1,17 +1,14 @@
 import constants from './../constants';
 const { initialState } = constants;
 
- const EarthQuakeReducer = (state = initialState, action) => {
+ const EarthQuakeReducer = (state = initialState.location, action) => {
    switch(action.type) {
      case "UPDATE":
-     let newLocation = Object.assign({}, state.location, {
+     let newLocation = Object.assign({}, state, {
        lat: action.lat,
        long: action.long
      })
-     let newState = Object.assign({}, state, {
-       location: newLocation
-     })
-     return newState;
+     return newLocation;
      default:
      return state;
    }

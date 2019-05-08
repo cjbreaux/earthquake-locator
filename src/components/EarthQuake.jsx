@@ -6,7 +6,7 @@ import UserSearch from './UserSearch'
 function EarthQuake({dispatch}) {
   return (
     <div>
-      <h1 onClick={()=>dispatch(upDateLocation(2, 10))}>this is earthquake page</h1>
+      <h1 onClick={()=>dispatch(upDateLocation(2, 10))}>this is the earthquake page</h1>
       <UserSearch />
     </div>
   )

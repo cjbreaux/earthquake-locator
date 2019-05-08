@@ -25,16 +25,23 @@ export function getCoordinates(city) {
       const lng = response.results[0].locations[0].latLng.lng;
       console.log(lat,lng)
       dispatch(upDateLocation(lat,lng));
-      getEarthquakeInfo(lat, lng);
+      getEarthquakeInfo(lat, lng, dispatch);
     })
   }
 }
 
-export function getEarthquakeInfo(lat,lng) {
+export function getEarthquakeInfo(lat,lng,dispatch) {
   return fetch('https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=' + lat + '&longitude='+ lng + '&maxradiuskm=200&endtime=2019-01-01&starttime=2016-01-01&minmagnitude=5').then(
     response => response.json(),
     error => console.log('An error occurred', error)
-  ).then(function(json) {
-    console.log(json);
+  ).then(function(response) {
+    const lat = response.features[0].geometry.coordinates[0];
+    const lng = response.features[0].geometry.coordinates[1];
+    const mag = response.features[0].properties.mag;
+    const place = response.features[0].properties.place;
+    const time = response.features[0].properties.time;
+    const site = {lat,lng,mag,place,time}
+    console.log(site);
+    dispatch(upDateEarthQuakeSites(site))
   })
 }

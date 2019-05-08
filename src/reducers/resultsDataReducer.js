@@ -4,7 +4,8 @@ const { initialState } = constants;
 const resultsDataReducer = (state = initialState.earthQuakeSites, action) => {
   switch(action.type) {
     case "UPDATE_SITE":
-    return 'asdkjahskdjhakjdh';
+
+    return [...state,action.earthQuakeSites];
     default:
     return state;
   }
