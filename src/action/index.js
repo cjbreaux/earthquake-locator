@@ -47,12 +47,6 @@ export function getEarthquakeInfo(lat,lng,dispatch) {
         const site = {lat,lng,mag,place,time};
         array.push(site);
       })
-      // const lat = response.features[0].geometry.coordinates[0];
-      // const lng = response.features[0].geometry.coordinates[1];
-      // const mag = response.features[0].properties.mag;
-      // const place = response.features[0].properties.place;
-      // const time = response.features[0].properties.time;
-      // const site = {lat,lng,mag,place,time}
       console.log(array);
       dispatch(upDateEarthQuakeSites(array))
     } else {
