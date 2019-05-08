@@ -35,13 +35,28 @@ export function getEarthquakeInfo(lat,lng,dispatch) {
     response => response.json(),
     error => console.log('An error occurred', error)
   ).then(function(response) {
-    const lat = response.features[0].geometry.coordinates[0];
-    const lng = response.features[0].geometry.coordinates[1];
-    const mag = response.features[0].properties.mag;
-    const place = response.features[0].properties.place;
-    const time = response.features[0].properties.time;
-    const site = {lat,lng,mag,place,time}
-    console.log(site);
-    dispatch(upDateEarthQuakeSites(site))
+    console.log(response)
+    if (response.features.length > 0) {
+      let array = [];
+      response.features.forEach((eq)=> {
+        const lat = eq.geometry.coordinates[0];
+        const lng = eq.geometry.coordinates[1];
+        const mag = eq.properties.mag;
+        const place = eq.properties.place;
+        const time = eq.properties.time;
+        const site = {lat,lng,mag,place,time};
+        array.push(site);
+      })
+      // const lat = response.features[0].geometry.coordinates[0];
+      // const lng = response.features[0].geometry.coordinates[1];
+      // const mag = response.features[0].properties.mag;
+      // const place = response.features[0].properties.place;
+      // const time = response.features[0].properties.time;
+      // const site = {lat,lng,mag,place,time}
+      console.log(array);
+      dispatch(upDateEarthQuakeSites(array))
+    } else {
+      console.log('no matching results')
+    }
   })
 }
